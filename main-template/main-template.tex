@@ -1,0 +1,17 @@
+\documentclass{minimal}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+% 绘图所需的TikZ子库
+\usepackage[active,tightpage]{preview}
+% 用了preview之后你生成的pdf文件都可以直接用`\includegraphics`命令加入文本中
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{2mm} % 边距
+\begin{document}
+\begin{tikzpicture}
+
+% 你的绘图代码
+\node (rect) at (0,0) [draw, thick, fill=orange, fill opacity=0.7,
+minimum width=1cm,minimum height=4cm] {$Y$};
+
+\end{tikzpicture}
+\end{document}

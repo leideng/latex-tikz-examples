@@ -1,4 +1,5 @@
 \documentclass{minimal}
+\usepackage[utf8]{inputenc}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 % 绘图所需的TikZ子库
@@ -10,8 +11,27 @@
 \begin{tikzpicture}
 
 % 你的绘图代码
-\node (rect) at (0,0) [draw, thick, fill=orange, fill opacity=0.7,
-minimum width=1cm,minimum height=4cm] {$Y$};
+
+% 第一种方法，\node一个通用的命令，你可以在后面的[]中画任何预先定义好的形状
+% (rect)是给这个node取的名字，draw是指边框，thick是指边框的粗细，
+% fill=orange是指在这个边框围起来的部分填入橙色
+% fill opacity是指橙色透明度如何
+% width和height是长宽
+% 前面有minimum表示如果后面{ }中的公式占空间太大的话，你的矩形可以自动改变大小
+% {}中是文字
+\node (rect) at (0,0) [draw, thick, fill=orange, fill opacity=0.5, minimum width=1cm,minimum height=4cm] {$Y$};
+
+% 在(1,0)添加一个文字公式节点，输入等于号
+\node at (1,0) {$=$};
+
+%第二种方法则比较手动，\draw命令指定从(1.5,-2)到 (3.5,2)画一个矩形，
+\draw[thick] (1.5,-2) rectangle (3.5,2);
+
+% \fill命令来决定填什么颜色。
+\fill[blue, opacity=0.1] (1.5,-2) rectangle (3.5,2);
+
+% 在(2.5,0)这里添加一个节点 Ax+\beta，实际就在矩形中心了。
+\node at (2.5,0) {$Ax+\beta$};
 
 \end{tikzpicture}
 \end{document}

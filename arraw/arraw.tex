@@ -1,0 +1,39 @@
+\documentclass{minimal}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations,arrows}
+\usetikzlibrary{decorations.markings}
+% 绘图所需的TikZ子库
+\usepackage[active,tightpage]{preview}
+% 用了preview之后你生成的pdf文件都可以直接用`\includegraphics`命令加入文本中
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{2mm} % 边距
+\begin{document}
+
+\begin{tikzpicture}
+\draw[style=help lines,step=1cm] (-2.3,-2.3) grid (2.3,2.3);
+
+\draw[->,very thick] (-2.8,0) -- (2.8,0) node[right] {$x$};
+\draw[->,very thick] (0,-2.8) -- (0,2.8) node[above] {$y$};
+
+\tikzset{->-/.style=
+{decoration={markings,mark=at position #1 with
+{\arrow{latex}}},postaction={decorate}}}
+\draw[thick,->-=0.5](2,0) -- (0,2);
+\draw[thick,->-=0.5](0,2) -- (-2,0);
+\draw[thick,->-=0.5](-2,0) -- (0,-2);
+\draw[thick,->-=0.5](0,-2) -- (2,0);
+
+\filldraw[fill= blue!50,opacity=0.3] (2,0) -- (0,2) -- (-2,0) -- (0,-2) -- cycle;
+\filldraw[fill= white,opacity=1] (-1,0) circle (0.3);
+
+\draw[thick, decoration={markings, mark=at position 0.3
+with {\arrow{latex reversed}}}, postaction={decorate}] (-1,0) circle (0.3);
+
+\node[above] at (1.2,1){$C$};
+\node[above] at (-1,0.3){$C'$};
+
+\end{tikzpicture}
+
+\end{document}
